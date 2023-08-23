@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button id="m1"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Recettes populaires</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="Discover Recettes">
+        <ion-label>Recettes</ion-label>
+        <ion-icon name="search"> </ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="Recettes Favorites">
+        <ion-label>Favorites</ion-label>
+        <ion-icon name="card"> </ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+  <ion-list>
+    <ion-item-sliding *ngFor="let recette of recettes">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="recette.image">
+        </ion-thumbnail>
+        <ion-label>{{ recette.title }}</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="addToFavorites(recette)">
+          Favori
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
